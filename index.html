@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pooja Sattigeri — Portfolio</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <meta name="description" content="Pooja Sattigeri — MCA Student, Full-Stack Developer, Cloud & Cybersecurity enthusiast. Portfolio & resume." />
+
+  <style>
+    :root {
+      --bg:#06070a;
+      --card:#0f1724;
+      --muted:#9ca3af;
+      --accent1:#6d28d9;
+      --accent2:#4f46e5;
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    html, body { height:100%; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #05060a 0%, #071024 60%);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .section-fade-in { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .section-fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .btn-primary { background-image: linear-gradient(90deg, var(--accent1), var(--accent2)); box-shadow: 0 8px 30px rgba(79,70,229,0.12); }
+    .btn-ghost { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+
+    .card-glow { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border-radius: 16px; }
+    .skill-card { background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding: .6rem .9rem; border-radius: 10px; display:flex; gap:.75rem; align-items:center; }
+
+    @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+    .marquee { display:flex; gap:2.5rem; animation: marquee 18s linear infinite; }
+    .marquee:hover { animation-play-state:paused; }
+
+    .btn-link { padding:.6rem 1rem; border-radius:10px; background: rgba(255,255,255,0.03); color: #e6eef8; text-decoration:none; margin:.2rem; }
+
+    .glass-border { border:1px solid rgba(255,255,255,0.04); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); }
+    canvas { width: 100% !important; height: 100% !important; display:block; }
+
+    .accent-underline { position: relative; display:inline-block; }
+    .accent-underline::after { content:''; position:absolute; left:0; right:0; bottom:-8px; height:6px; border-radius:999px; background: linear-gradient(90deg,var(--accent1),var(--accent2)); opacity:.22; transform: translateY(6px); transition: transform .35s ease; }
+    .accent-underline:hover::after { transform: translateY(0); opacity:.95; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/6">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-md bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold">PS</div>
+        <div class="text-white font-semibold">Pooja Sattigeri</div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm text-gray-300">
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#projects" class="hover:text-white">Projects</a>
+        <a href="#skills" class="hover:text-white">Skills</a>
+        <a href="#internships" class="hover:text-white">Experience</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+        <a href="file:///C:/pooja_portfolio/safe%20resum/normal%20Resume.html" id="downloadResume" class="ml-4 px-4 py-2 text-sm btn-primary rounded-md text-white shadow">Download Resume</a>
+      </nav>
+
+      <button id="mobile-toggle" class="md:hidden text-white" aria-label="menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/6 bg-black/40">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="#about" class="text-gray-200">About</a>
+        <a href="#projects" class="text-gray-200">Projects</a>
+        <a href="#skills" class="text-gray-200">Skills</a>
+        <a href="#internships" class="text-gray-200">Experience</a>
+        <a href="#contact" class="text-gray-200">Contact</a>
+        <a href="file:///C:/pooja_portfolio/safe%20resum/normal%20Resume.html" id="downloadResumeMobile" class="mt-2 px-4 py-2 btn-primary rounded text-white text-center">Download Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+ <section id="home" class="min-h-[72vh] flex items-center justify-center">
+  <div class="space-y-6 section-fade-in text-center">
+    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+      Hey  I'm <span class="text-indigo-500">Pooja Sattigeri</span>
+    </h1>
+    <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+      MCA Student, Full-Stack Developer, and Cloud & Cybersecurity enthusiast — I love building <span class="font-semibold text-indigo-400">secure, scalable web apps</span>.
+    </p>
+   <p class="text-gray-200 max-w-xl">
+  Beyond coding, I enjoy building cloud-based solutions, tackling cybersecurity challenges, and automating tasks to create efficient, real-world applications.
+</p>
+  </div>
+
+  <!-- Right: neon card + canvas -->
+      <div class="relative section-fade-in">
+        <div class="relative rounded-xl overflow-hidden card-glow glass-border p-6" style="min-height:520px;">
+          <div class="absolute inset-0 -z-30">
+            <canvas id="networkCanvas" width="9142" height="700" style="background: radial-gradient(circle at 20% 20%, rgba(79,70,229,0.06), transparent 20%), radial-gradient(circle at 90% 90%, rgba(99,102,241,0.04), transparent 20%);"></canvas>
+          </div>
+          <div class="relative z-20 text-center md:text-left">
+  <!-- Heading -->
+  <h3 class="text-2xl md:text-3xl font-bold mb-4 text-indigo-400">
+    MCA • Full-Stack • Cloud & Cyber
+  </h3>
+
+  <!-- Description -->
+  <p class="text-gray-200 text-lg md:text-xl mb-6">
+    I build <span class="font-semibold text-indigo-300">secure, cloud-ready web applications</span> 
+    and automation tools — combining backend, frontend, and infrastructure knowledge.
+  </p>
+
+  <!-- Skills -->
+  <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+    <span class="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm hover:scale-105 transition-transform">Next.js</span>
+    <span class="px-4 py-2 rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium text-sm hover:scale-105 transition-transform">React</span>
+    <span class="px-4 py-2 rounded-md bg-gradient-to-r from-green-500 to-teal-500 text-white font-medium text-sm hover:scale-105 transition-transform">Node.js</span>
+    <span class="px-4 py-2 rounded-md bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-medium text-sm hover:scale-105 transition-transform">AWS</span>
+    <span class="px-4 py-2 rounded-md bg-gradient-to-r from-pink-500 to-red-500 text-white font-medium text-sm hover:scale-105 transition-transform">OpenCV</span>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+      
+  <!-- ABOUT -->
+ <main class="container mx-auto px-6 pb-16">
+  <section id="about" class="mt-8 section-fade-in grid md:grid-cols-3 gap-8 items-start">
+    
+    <!-- Left: Description -->
+    <div class="md:col-span-2 space-y-4">
+      <h2 class="text-2xl font-bold mb-3 border-b-2 border-green-400 inline-block pb-1 flex items-center gap-2">
+        <i class="text-green-400">💻</i> About / Cloud & Cyber Focus
+      </h2>
+      <p class="text-gray-300 leading-relaxed">
+        MCA student at <strong>KLE Technological University</strong> (CGPA 8.40), building practical full-stack, ML, and cloud projects. Focused on <span class="text-green-300 font-semibold">cloud automation</span>, secure development practices, and networking — combining software engineering with systems & data knowledge.
+      </p>
+      <p class="text-gray-300 leading-relaxed">
+        Recent work includes <span class="text-green-300 font-semibold">real-time computer vision with OpenCV</span>, <span class="text-green-300 font-semibold">cloud deployments</span>, and <span class="text-green-300 font-semibold">secure APIs</span>. Enjoy automating workflows and applying security best practices to make apps reliable and scalable.
+      </p>
+      
+      <!-- Tech / Skills Badges -->
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="px-3 py-1 rounded-full bg-indigo-800 text-sm text-white shadow">Python</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-800 text-sm text-white shadow">Java</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-800 text-sm text-white shadow">React</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-800 text-sm text-white shadow">Next.js</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-800 text-sm text-white shadow">Node.js</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-800 text-sm text-white shadow">AWS</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-800 text-sm text-white shadow">OpenCV</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-800 text-sm text-white shadow">Cybersecurity</span>
+      </div>
+    </div>
+    
+    <!-- Right: Cards -->
+    <div class="space-y-4">
+      <!-- Education Card -->
+      <div class="glass-border p-4 rounded-lg hover:scale-105 transition-transform duration-300 shadow-lg">
+        <div class="flex items-center gap-2">
+          <i class="text-green-400">🎓</i>
+          <div>
+            <div class="font-semibold text-white">MCA — KLE Technological University</div>
+            <div class="text-sm text-gray-400">2024 – Present • CGPA: 8.40</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-border p-4 rounded-lg hover:scale-105 transition-transform duration-300 shadow-lg">
+        <div class="flex items-center gap-2">
+          <i class="text-green-400">📚</i>
+          <div>
+            <div class="font-semibold text-white">BCA — KLS Gogte College</div>
+            <div class="text-sm text-gray-400">2021 – 2024 • CGPA: 8.42</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages Card -->
+      <div class="glass-border p-4 rounded-lg hover:scale-105 transition-transform duration-300 shadow-lg">
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center gap-2">
+            <i class="text-green-400">🗣️</i>
+            <div class="font-semibold text-white">Languages</div>
+          </div>
+          <div class="text-sm text-gray-400 flex flex-wrap gap-2 mt-1">
+            <span class="px-2 py-1 bg-[#10121a] rounded text-xs text-green-300">English</span>
+            <span class="px-2 py-1 bg-[#10121a] rounded text-xs text-green-300">Hindi</span>
+            <span class="px-2 py-1 bg-[#10121a] rounded text-xs text-green-300">Kannada</span>
+            <span class="px-2 py-1 bg-[#10121a] rounded text-xs text-green-300">Marathi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+
+     <section id="projects" class="mt-14 section-fade-in">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-3xl font-bold text-white">Projects</h2>
+    <button id="seeMoreBtn" class="text-sm btn-ghost px-3 py-2 rounded-md">See More</button>
+  </div>
+
+  <div class="flex flex-wrap gap-6">
+    <!-- Project Card -->
+    <article class="relative w-full md:w-[32%] bg-[#0b1220] p-6 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 group overflow-hidden">
+      <div class="absolute -top-6 -right-6 text-[80px] opacity-10 group-hover:opacity-20 transition-opacity">🚗</div>
+      <h3 class="text-xl font-semibold text-white mb-2">Capture Vehicle In-Out Time</h3>
+      <p class="text-gray-400 text-sm mb-4">
+        Real-time license plate recognition system designed for automated vehicle tracking in parking lots,
+         colleges, or gated communities. The system captures vehicle entry and exit times, detects license plates
+          using OpenCV, and extracts text via OCR. Optimized with multithreading to handle multiple camera feeds simultaneously. 
+          Robust under varied lighting and camera angles, ensuring accurate recognition in real-world scenarios. 
+          Includes logging and reporting features for administrators.
+      <div class="flex gap-2 flex-wrap">
+        <span class="px-3 py-1 rounded-full bg-indigo-600/20 text-indigo-400 text-xs font-medium">Python</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-600/20 text-indigo-400 text-xs font-medium">OpenCV</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-600/20 text-indigo-400 text-xs font-medium">OCR</span>
+      </div>
+    </article>
+
+    <article class="relative w-full md:w-[32%] bg-[#0b1220] p-6 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 group overflow-hidden">
+      <div class="absolute -top-6 -right-6 text-[80px] opacity-10 group-hover:opacity-20 transition-opacity">🏥</div>
+      <h3 class="text-xl font-semibold text-white mb-2">Hospital Management System</h3>
+      <p class="text-gray-400 text-sm mb-4">
+    Comprehensive web-based system to manage patient records, doctor schedules, billing,
+ and pharmacy inventories. Implements role-based access control to ensure secure data access for doctors,
+  staff, and admins. Backend optimized with efficient database queries for fast retrieval of medical and 
+  financial data. Includes features like appointment scheduling, patient history, and automated billing 
+  generation. Built to improve hospital workflow and reduce manual errors.      </p>
+      <div class="flex gap-2 flex-wrap">
+        <span class="px-3 py-1 rounded-full bg-green-600/20 text-green-400 text-xs font-medium">Java</span>
+        <span class="px-3 py-1 rounded-full bg-green-600/20 text-green-400 text-xs font-medium">MySQL</span>
+        <span class="px-3 py-1 rounded-full bg-green-600/20 text-green-400 text-xs font-medium">React</span>
+      </div>
+    </article>
+
+    <article class="relative w-full md:w-[32%] bg-[#0b1220] p-6 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 group overflow-hidden">
+      <div class="absolute -top-6 -right-6 text-[80px] opacity-10 group-hover:opacity-20 transition-opacity">💬</div>
+      <h3 class="text-xl font-semibold text-white mb-2">Real-Time Chat Application</h3>
+      <p class="text-gray-400 text-sm mb-4">
+     A full-featured messaging platform supporting private and group chats.
+      Users can create accounts, authenticate securely using JWT (JSON Web Tokens), 
+      and exchange messages instantly via WebSockets. Messages are encrypted during transport to ensure security. 
+      The app includes typing indicators, read receipts, and online/offline status updates. Built for scalability with cloud deployment on AWS, 
+      the backend is powered by Node.js with a MongoDB database, while the frontend uses React for a responsive, interactive UI.
+      </p>
+      <div class="flex gap-2 flex-wrap">
+        <span class="px-3 py-1 rounded-full bg-pink-600/20 text-pink-400 text-xs font-medium">Node.js</span>
+        <span class="px-3 py-1 rounded-full bg-pink-600/20 text-pink-400 text-xs font-medium">Socket.io</span>
+        <span class="px-3 py-1 rounded-full bg-pink-600/20 text-pink-400 text-xs font-medium">MongoDB</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+    <!-- SKILLS & EXPERIENCE -->
+    <section id="skills" class="mt-14 section-fade-in grid md:grid-cols-2 gap-6">
+      <div class="bg-white/3 p-6 rounded-xl glass-border">
+        <h4 class="font-semibold mb-3">Technical Skills</h4>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div class="skill-card"><img src="https://skillicons.dev/icons?i=java" class="w-6 h-6"><div><div class="font-medium">Java</div><div class="text-xs text-gray-400">OOP, data structures</div></div></div>
+          <div class="skill-card"><img src="https://skillicons.dev/icons?i=python" class="w-6 h-6"><div><div class="font-medium">Python</div><div class="text-xs text-gray-400">Scripting, ML basics</div></div></div>
+          <div class="skill-card"><img src="https://skillicons.dev/icons?i=html" class="w-6 h-6"><div><div class="font-medium">HTML & CSS</div><div class="text-xs text-gray-400">Responsive markup</div></div></div>
+          <div class="skill-card"><img src="https://skillicons.dev/icons?i=js" class="w-6 h-6"><div><div class="font-medium">JavaScript (MERN)</div><div class="text-xs text-gray-400">React / Node basics</div></div></div>
+          <div class="skill-card"><img src="https://skillicons.dev/icons?i=mysql" class="w-6 h-6"><div><div class="font-medium">MySQL / DBMS</div><div class="text-xs text-gray-400">Schema design & queries</div></div></div>
+          <div class="skill-card"><img src="https://skillicons.dev/icons?i=linux" class="w-6 h-6"><div><div class="font-medium">Linux & Networking</div><div class="text-xs text-gray-400">CLI & basic network configs</div></div></div>
+          <div class="skill-card"><img src="https://skillicons.dev/icons?i=aws" class="w-6 h-6"><div><div class="font-medium">Cloud (AWS)</div><div class="text-xs text-gray-400">S3, basic infra</div></div></div>
+          <div class="skill-card"><img src="https://skillicons.dev/icons?i=docker" class="w-6 h-6"><div><div class="font-medium">Docker</div><div class="text-xs text-gray-400">Containerization basics</div></div></div>
+        </div>
+      </div>
+
+      <section id="internships" class="space-y-6">
+        <h2 class="text-2xl font-bold mb-4">Internships & Experience</h2>
+        <div class="p-6 card-glow glass-border rounded-xl">
+          <h3 class="font-semibold">Product Marketing Intern — Viral Fission (2025)</h3>
+          <p class="text-gray-400 mt-2">Developed digital engagement strategies and social media campaigns for Gen Z audiences.</p>
+        </div>
+        <div class="p-6 card-glow glass-border rounded-xl">
+          <h3 class="font-semibold">Full Stack Development (MERN) — Capable Specialization (2023)</h3>
+          <p class="text-gray-400 mt-2">Built MERN apps, REST APIs, cloud deployment, and responsive front-end design.</p>
+        </div>
+      </section>
+    </section>
+
+   <!-- CERTIFICATIONS & CONTACT -->
+<section id="extra" class="mt-14 section-fade-in grid md:grid-cols-2 gap-8">
+
+  <!-- Certifications -->
+  <div class="glass-border p-6 rounded-xl">
+    <h2 class="text-2xl font-bold mb-6">Certifications</h2>
+    <ul class="space-y-4">
+      <li class="flex items-center gap-3 p-3 rounded-md bg-[#0b1220] hover:bg-[#161b2c] transition shadow">
+        <span class="text-2xl">🎓</span>
+        <div>
+          <strong>AWS Cloud Practitioner</strong> — Udemy, 04/05/2025 (15 hours)
+        </div>
+      </li>
+      <li class="flex items-center gap-3 p-3 rounded-md bg-[#0b1220] hover:bg-[#161b2c] transition shadow">
+        <span class="text-2xl">☁️</span>
+        <div>
+          <strong>AWS Cloud Practitioner Essentials</strong> — AWS, 12/01/2024
+        </div>
+      </li>
+      <li class="flex items-center gap-3 p-3 rounded-md bg-[#0b1220] hover:bg-[#161b2c] transition shadow">
+        <span class="text-2xl">🛡️</span>
+        <div>
+          <strong>Cyber Security: Hackers Exposed</strong> — Udemy, 17/11/2024 (12 hours)
+        </div>
+      </li>
+      <li class="flex items-center gap-3 p-3 rounded-md bg-[#0b1220] hover:bg-[#161b2c] transition shadow">
+        <span class="text-2xl">💻</span>
+        <div>
+          <strong>Data Science & Machine Learning Internship</strong> — Edureka, 06/05/2024
+        </div>
+      </li>
+      <li class="flex items-center gap-3 p-3 rounded-md bg-[#0b1220] hover:bg-[#161b2c] transition shadow">
+        <span class="text-2xl">🌐</span>
+        <div>
+          <strong>Full Stack Development Internship (MERN)</strong> — Edureka, 06/05/2024
+        </div>
+      </li>
+      <li class="flex items-center gap-3 p-3 rounded-md bg-[#0b1220] hover:bg-[#161b2c] transition shadow">
+        <span class="text-2xl">📱</span>
+        <div>
+          <strong>Mobile App Development (Flutter & Dart)</strong> — Excelr, 30 hours, 06/05/2023–2024
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Contact -->
+  <div class="glass-border p-6 rounded-xl" id="contact">
+    <h2 class="text-2xl font-bold mb-4">Get in touch</h2>
+    <p class="text-gray-400 mb-6">
+      Open to internships and junior roles — I reply quickly to practical opportunities.
+    </p>
+    <div class="flex flex-col gap-4">
+      <a href="mailto:poojasattigeri83@gmail.com" class="pulse flex items-center gap-3 rounded-md bg-cyan-900 px-5 py-3 hover:scale-105 transition shadow">
+        <i data-lucide="mail" class="text-cyan-300 w-5 h-5"></i>
+        <span>Email Me</span>
+      </a>
+      <a href="https://www.linkedin.com/in/pooja-sattigeri-a86a36373" target="_blank" class="pulse flex items-center gap-3 rounded-md bg-violet-900 px-5 py-3 hover:scale-105 transition shadow">
+        <i data-lucide="linkedin" class="text-violet-400 w-5 h-5"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/Pooja332211" target="_blank" class="pulse flex items-center gap-3 rounded-md bg-gray-800 px-5 py-3 hover:scale-105 transition shadow">
+        <i data-lucide="github" class="text-gray-300 w-5 h-5"></i>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-8 text-center border-t border-white/6">
+    <div class="container mx-auto px-6 text-gray-400">
+      Last updated: <strong>September 2025</strong> • Built by Pooja Sattigeri
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    lucide.createIcons();
+
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.section-fade-in').forEach(s => observer.observe(s));
+
+    document.getElementById('downloadResume').addEventListener('click', ev => { ev.preventDefault(); window.open('file:///C:/pooja_portfolio/safe%20resum/normal%20Resume.html','_blank'); });
+    document.getElementById('downloadResumeMobile').addEventListener('click', ev => { ev.preventDefault(); window.open('file:///C:/pooja_portfolio/safe%20resum/normal%20Resume.html','_blank'); });
+
+    // NETWORK CANVAS ANIMATION
+    const canvas = document.getElementById('networkCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas(){ canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    window.addEventListener('resize', resizeCanvas); resizeCanvas();
+
+    const colors = ['#00f6ff','#8b5cf6','#ff4dd2','#00ff99','#6ee7b7'];
+    const particles = [];
+    const PARTICLE_COUNT = Math.max(60, Math.floor(canvas.width*0.12));
+    for(let i=0;i<PARTICLE_COUNT;i++) particles.push({ x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2.5+0.8, dx:(Math.random()-0.5)*(Math.random()*1.6+0.6), dy:(Math.random()-0.5)*(Math.random()*1.6+0.6), color:colors[Math.floor(Math.random()*colors.length)] });
+
+    function glowLine(x1,y1,x2,y2,color,alpha){ ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.strokeStyle=color; ctx.globalAlpha=alpha*0.9; ctx.lineWidth=1; ctx.shadowBlur=8; ctx.shadowColor=color; ctx.stroke(); ctx.shadowBlur=0; ctx.globalAlpha=1; }
+
+    function animate(){
+      ctx.fillStyle='rgba(4,6,12,0.25)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      for(let i=0;i<particles.length;i++){ for(let j=i+1;j<particles.length;j++){ const a=particles[i], b=particles[j]; const dx=a.x-b.x, dy=a.y-b.y, d=Math.sqrt(dx*dx+dy*dy); if(d<140){ glowLine(a.x,a.y,b.x,b.y,a.color,1-d/140*0.8); } } }
+      particles.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=p.color; ctx.shadowColor=p.color; ctx.shadowBlur=12; ctx.fill(); ctx.shadowBlur=0; p.x+=p.dx; p.y+=p.dy; if(p.x<0||p.x>canvas.width)p.dx*=-1; if(p.y<0||p.y>canvas.height)p.dy*=-1; });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
